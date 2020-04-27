@@ -27,7 +27,11 @@ int main(int argc, char *argv[]) {
             }
     }
     clock_t toc = clock();
-    printf("increment %d for %d times, Elapsed: %f seconds\n", increment, times, (double)(toc - tic) / CLOCKS_PER_SEC);
+    // printf("increment %d for %d times, Elapsed: %f seconds\n", increment, times, (double)(toc - tic) / CLOCKS_PER_SEC);
+    int elapse = (int)(toc - tic);
+    char out_s[12];
+    int len = sprintf(out_s, "%d", elapse);
 
+    write(STDOUT_FILENO, out_s, len);
     return 0;
 }
