@@ -18,8 +18,8 @@ import numpy as np
 ROOT_PATH = "/Users/klin/CODE/github/ostep-code/homework/HW-TLB-Calc"
 
 def run_cahce_test2():
-    inc = 1024
-    x = [i for i in range(1, 20)]
+    inc = 512
+    x = [i for i in range(1,35)]
     y = []
 
     for times in x:
