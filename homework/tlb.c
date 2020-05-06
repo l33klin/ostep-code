@@ -4,37 +4,24 @@
 
 #include <unistd.h> /* for sleep() */
 
-// int PAGENUM = 8096*64;
+int PAGENUM = 8096*64;
 int PAGESIZE = 4096;
 
 int main(int argc, char *argv[]) {
-
-    if (argc < 2) {
-        printf("Require at least two arguments!\n");
-        exit(1);
-    }
-
-    int loop = atoi(argv[1]);
-    int pagenum = atoi(argv[2]);
-    printf("Loop:%d\n", loop);
-    printf("Pagenum:%d\n", pagenum);
-
     clock_t tic = clock();
-    int *a = (int *)malloc(pagenum * PAGESIZE);
-    int i = 0;
-    for (size_t j = 0; j < loop; j++)
+
+    int *a = malloc(PAGENUM * PAGESIZE);
+    for (int i = 0; i < PAGENUM * PAGESIZE / sizeof(int); i += PAGESIZE/sizeof(int))
     {
-        for (i = 0; i < pagenum; i++)
-        {
-            a[i * PAGESIZE / sizeof(int)]++;
-        }
+        a[i] = 1;
     }
+    
     clock_t toc = clock();
 
     int sum = 0;
-    for (int i = 0; i < pagenum ; i++)
+    for (int i = 0; i < PAGENUM * PAGESIZE / sizeof(int); i += PAGESIZE/sizeof(int))
     {
-        sum += a[i * PAGESIZE / sizeof(int)];
+        sum += a[i];
     }
     printf("Sum: %d\n", sum);
 
