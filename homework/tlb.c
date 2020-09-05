@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
     printf("Sum: %d\n", sum);
 
     printf("Elapsed: %f seconds\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+    printf("Visit Page time: %0.2f ns\n", (double)(toc - tic) / (loop * pagenum));
 
     return 0;
 }
